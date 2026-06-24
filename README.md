@@ -29,6 +29,8 @@ http://127.0.0.1:4173/?mock=filled&fast=1
 http://127.0.0.1:4173/?mock=unfilled&fast=1
 ```
 
+The repository also includes a static `index.html` demo that can run from static hosting or GitHub Pages.
+
 ## Configure
 
 Edit `gadwaiting.config.json`.
@@ -117,6 +119,7 @@ Create fallback creatives for these sizes: 300x250, 336x280, 728x90, 970x90, 970
 - If you use external image URLs, make sure they are stable and fast.
 - If your ad provider uses a different script URL, set `provider.scriptUrl` or `check.endpoint`.
 - For static hosting, commit `public/index.html`, `public/house-ads/*`, `dist/gadwaiting.js`, and `gadwaiting.config.json`.
+- For GitHub Pages, serve the repository root and open `index.html`.
 
 ## Commands
 

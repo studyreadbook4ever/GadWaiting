@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GadWaiting</title>
+    <style>
+      :root {
+        color: #111827;
+        background: #f3f4f6;
+        font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+      }
+
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 18px clamp(16px, 5vw, 56px);
+        border-bottom: 1px solid #d1d5db;
+        background: #fff;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 20px;
+        line-height: 1.2;
+        letter-spacing: 0;
+      }
+
+      nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      nav a,
+      output {
+        min-height: 32px;
+        padding: 7px 10px;
+        border: 1px solid #cbd5e1;
+        border-radius: 6px;
+        background: #fff;
+        color: #0f172a;
+        font-size: 13px;
+        line-height: 16px;
+        text-decoration: none;
+        white-space: nowrap;
+      }
+
+      nav a[aria-current="page"] {
+        border-color: #0f766e;
+        background: #ecfdf5;
+      }
+
+      .top-band {
+        display: flex;
+        justify-content: center;
+        padding: 22px 16px;
+        background: #e5e7eb;
+      }
+
+      main {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 320px;
+        gap: 24px;
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 28px 16px 48px;
+      }
+
+      article {
+        min-width: 0;
+        padding: 26px;
+        border: 1px solid #d1d5db;
+        border-radius: 8px;
+        background: #fff;
+      }
+
+      h2 {
+        margin: 0 0 12px;
+        font-size: 26px;
+        line-height: 1.2;
+        letter-spacing: 0;
+      }
+
+      h3 {
+        margin: 24px 0 8px;
+        font-size: 17px;
+        line-height: 1.3;
+        letter-spacing: 0;
+      }
+
+      p,
+      li {
+        color: #374151;
+        font-size: 16px;
+        line-height: 1.7;
+      }
+
+      p {
+        max-width: 68ch;
+        margin: 0 0 14px;
+      }
+
+      ul {
+        max-width: 72ch;
+        margin: 0 0 14px;
+        padding-left: 20px;
+      }
+
+      code {
+        border-radius: 4px;
+        background: #f1f5f9;
+        padding: 1px 4px;
+        color: #0f172a;
+        font-size: 0.92em;
+      }
+
+      pre {
+        max-width: 100%;
+        overflow-x: auto;
+        margin: 10px 0 16px;
+        padding: 12px;
+        border-radius: 6px;
+        background: #0f172a;
+        color: #e5e7eb;
+        font-size: 13px;
+        line-height: 1.45;
+      }
+
+      aside {
+        display: flex;
+        justify-content: center;
+        min-width: 0;
+      }
+
+      #ad-leaderboard {
+        width: min(728px, 100%);
+      }
+
+      #ad-sidebar {
+        width: 300px;
+      }
+
+      @media (max-width: 800px) {
+        header {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        main {
+          grid-template-columns: 1fr;
+        }
+
+        aside {
+          justify-content: flex-start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>GadWaiting</h1>
+      <nav aria-label="Demo modes">
+        <a href="?mock=down" data-mode="down">Fallback</a>
+        <a href="?mock=filled" data-mode="filled">Network</a>
+        <a href="?mock=unfilled" data-mode="unfilled">Unfilled</a>
+      </nav>
+      <output id="status">checking</output>
+    </header>
+
+    <div class="top-band">
+      <div id="ad-leaderboard"></div>
+    </div>
+
+    <main>
+      <article>
+        <h2>Ad slot test surface</h2>
+        <p>
+          <strong>GadWaiting</strong>, officially <strong>개드웨이팅</strong>, is a tiny TypeScript library for the waiting period before a web ad program is approved or reliably serving ads.
+        </p>
+        <p>
+          This static demo runs without a local server. It imports <code>dist/gadwaiting.js</code>, swaps between mock provider states, and keeps the slot dimensions fixed.
+        </p>
+        <h3>Modes</h3>
+        <ul>
+          <li><strong>Fallback</strong>: uses a missing provider script, so the local creative appears.</li>
+          <li><strong>Network</strong>: uses a mock script that fills the ad slot.</li>
+          <li><strong>Unfilled</strong>: uses a mock script that reports an empty ad unit, then falls back.</li>
+        </ul>
+        <h3>Drop-in usage</h3>
+        <pre><code>&lt;div id="ad-sidebar"&gt;&lt;/div&gt;
+&lt;script type="module"&gt;
+  import { mountGadWaiting } from "./dist/gadwaiting.js";
+  mountGadWaiting(config);
+&lt;/script&gt;</code></pre>
+        <h3>Default creative set</h3>
+        <p>
+          Replace the files in <code>public/house-ads</code> with your own images for <code>300x250</code>, <code>336x280</code>, <code>728x90</code>, <code>970x90</code>, <code>970x250</code>, <code>320x50</code>, <code>320x100</code>, <code>300x600</code>, and <code>160x600</code>.
+        </p>
+      </article>
+      <aside>
+        <div id="ad-sidebar"></div>
+      </aside>
+    </main>
+
+    <script type="module">
+      import { mountGadWaiting } from "./dist/gadwaiting.js";
+
+      const params = new URLSearchParams(location.search);
+      const mode = params.get("mock") ?? "down";
+      const links = document.querySelectorAll("nav a[data-mode]");
+      const status = document.getElementById("status");
+      const providerScript = mode === "down"
+        ? "./missing-ad-provider-script.js"
+        : `./mock-ad-script.js?fill=${mode === "unfilled" ? "0" : "1"}`;
+
+      for (const link of links) {
+        if (link.dataset.mode === mode) {
+          link.setAttribute("aria-current", "page");
+        }
+      }
+
+      const commonAssets = [
+        { src: "./public/house-ads/local-300x250.svg", width: 300, height: 250 },
+        { src: "./public/house-ads/local-336x280.svg", width: 336, height: 280 },
+        { src: "./public/house-ads/local-728x90.svg", width: 728, height: 90 },
+        { src: "./public/house-ads/local-970x90.svg", width: 970, height: 90 },
+        { src: "./public/house-ads/local-970x250.svg", width: 970, height: 250 },
+        { src: "./public/house-ads/local-320x50.svg", width: 320, height: 50 },
+        { src: "./public/house-ads/local-320x100.svg", width: 320, height: 100 },
+        { src: "./public/house-ads/local-300x600.svg", width: 300, height: 600 },
+        { src: "./public/house-ads/local-160x600.svg", width: 160, height: 600 }
+      ];
+
+      const fallback = {
+        href: "https://eff0rtchung.kr/",
+        target: "_self",
+        label: "Advertisement",
+        alt: "GadWaiting fallback advertisement",
+        assets: commonAssets
+      };
+
+      const config = {
+        check: {
+          endpoint: providerScript,
+          intervalMs: 5000,
+          timeoutMs: 1000,
+          consecutiveFailures: 1,
+          consecutiveSuccesses: 1,
+          startHealthy: false
+        },
+        render: {
+          reserveSpace: true,
+          className: "gadwaiting"
+        },
+        slots: [
+          {
+            id: "top-leaderboard",
+            mount: "#ad-leaderboard",
+            size: { width: 728, height: 90 },
+            provider: {
+              client: "demo-client",
+              slot: "demo-leaderboard",
+              scriptUrl: providerScript,
+              format: "auto",
+              fullWidthResponsive: true,
+              testMode: "on"
+            },
+            fallback
+          },
+          {
+            id: "sidebar-rectangle",
+            mount: "#ad-sidebar",
+            size: { width: 300, height: 250 },
+            provider: {
+              client: "demo-client",
+              slot: "demo-sidebar",
+              scriptUrl: providerScript,
+              format: "auto",
+              fullWidthResponsive: true,
+              testMode: "on"
+            },
+            fallback
+          }
+        ]
+      };
+
+      const controller = mountGadWaiting(config);
+
+      window.setInterval(() => {
+        const health = controller.getHealth();
+        const label = `${health.health} ${health.reason}`;
+        status.value = label;
+        status.textContent = label;
+      }, 300);
+    </script>
+  </body>
+</html>
