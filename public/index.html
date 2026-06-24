@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GadWaiting demo</title>
+    <style>
+      :root {
+        color: #111827;
+        background: #f3f4f6;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+      }
+
+      .shell {
+        min-height: 100vh;
+      }
+
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 18px clamp(16px, 5vw, 56px);
+        border-bottom: 1px solid #d1d5db;
+        background: #fff;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 18px;
+        line-height: 1.2;
+        letter-spacing: 0;
+      }
+
+      nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      nav a,
+      output {
+        min-height: 32px;
+        padding: 7px 10px;
+        border: 1px solid #cbd5e1;
+        border-radius: 6px;
+        background: #fff;
+        color: #0f172a;
+        font-size: 13px;
+        line-height: 16px;
+        text-decoration: none;
+        white-space: nowrap;
+      }
+
+      nav a[aria-current="page"] {
+        border-color: #0f766e;
+        background: #ecfdf5;
+      }
+
+      .top-band {
+        display: flex;
+        justify-content: center;
+        padding: 22px 16px;
+        background: #e5e7eb;
+      }
+
+      main {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 320px;
+        gap: 24px;
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 28px 16px 48px;
+      }
+
+      article {
+        min-width: 0;
+        padding: 26px;
+        border: 1px solid #d1d5db;
+        border-radius: 8px;
+        background: #fff;
+      }
+
+      article h2 {
+        margin: 0 0 12px;
+        font-size: 26px;
+        line-height: 1.2;
+        letter-spacing: 0;
+      }
+
+      article p {
+        max-width: 64ch;
+        margin: 0 0 14px;
+        color: #374151;
+        font-size: 16px;
+        line-height: 1.7;
+      }
+
+      article h3 {
+        margin: 24px 0 8px;
+        font-size: 17px;
+        line-height: 1.3;
+        letter-spacing: 0;
+      }
+
+      article ul {
+        max-width: 70ch;
+        margin: 0 0 14px;
+        padding-left: 20px;
+        color: #374151;
+        font-size: 15px;
+        line-height: 1.65;
+      }
+
+      article code {
+        border-radius: 4px;
+        background: #f1f5f9;
+        padding: 1px 4px;
+        color: #0f172a;
+        font-size: 0.92em;
+      }
+
+      article pre {
+        max-width: 100%;
+        overflow-x: auto;
+        margin: 10px 0 16px;
+        padding: 12px;
+        border-radius: 6px;
+        background: #0f172a;
+        color: #e5e7eb;
+        font-size: 13px;
+        line-height: 1.45;
+      }
+
+      aside {
+        display: flex;
+        justify-content: center;
+        min-width: 0;
+      }
+
+      #ad-leaderboard {
+        width: min(728px, 100%);
+      }
+
+      #ad-sidebar {
+        width: 300px;
+      }
+
+      @media (max-width: 800px) {
+        header {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        main {
+          grid-template-columns: 1fr;
+        }
+
+        aside {
+          justify-content: flex-start;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="shell">
+      <header>
+        <h1>GadWaiting</h1>
+        <nav aria-label="Demo modes">
+          <a href="?mock=down&fast=1" data-mode="down">Fallback</a>
+          <a href="?mock=filled&fast=1" data-mode="filled">Network</a>
+          <a href="?mock=unfilled&fast=1" data-mode="unfilled">Unfilled</a>
+        </nav>
+        <output id="status">checking</output>
+      </header>
+
+      <div class="top-band">
+        <div id="ad-leaderboard"></div>
+      </div>
+
+      <main>
+        <article>
+          <h2>Ad slot test surface</h2>
+          <p>
+            <strong>GadWaiting</strong>, officially <strong>개드웨이팅</strong>, is a tiny TypeScript library for the waiting period before a web ad program is approved or reliably serving ads.
+          </p>
+          <p>
+            When the ad provider script is unavailable, times out, or reports an unfilled slot, GadWaiting shows your own local image ad in the same space.
+          </p>
+          <h3>What this demo proves</h3>
+          <ul>
+            <li>Fallback mode shows the local <code>GadWaiting...</code> creative.</li>
+            <li>Network mode renders a mock provider creative in the same fixed slot.</li>
+            <li>Unfilled mode falls back after the provider reports an empty ad unit.</li>
+          </ul>
+          <h3>Quick start</h3>
+          <pre><code>npm run doctor
+npm run demo</code></pre>
+          <h3>Drop-in usage</h3>
+          <pre><code>&lt;div id="ad-sidebar"&gt;&lt;/div&gt;
+&lt;script type="module"&gt;
+  import { mountGadWaiting } from "/dist/gadwaiting.js";
+
+  const config = await fetch("/gadwaiting.config.json").then((response) =&gt; response.json());
+  mountGadWaiting(config);
+&lt;/script&gt;</code></pre>
+          <h3>Default creative set</h3>
+          <p>
+            Replace the files in <code>public/house-ads</code> with your own images for <code>300x250</code>, <code>336x280</code>, <code>728x90</code>, <code>970x90</code>, <code>970x250</code>, <code>320x50</code>, <code>320x100</code>, <code>300x600</code>, and <code>160x600</code>.
+          </p>
+          <h3>AI-native setup prompt</h3>
+          <pre><code>Wire GadWaiting into this page. Add stable ad mount elements, keep the layout from shifting, replace the fallback images under public/house-ads with project-branded creatives, set fallback.href to the preferred landing page, then run npm run doctor and fix every warning.</code></pre>
+          <h3>Practical rule</h3>
+          <p>
+            Keep the slot clearly labeled as advertising, avoid misleading click prompts, and make the fallback creative look like a real house ad rather than site navigation.
+          </p>
+        </article>
+        <aside>
+          <div id="ad-sidebar"></div>
+        </aside>
+      </main>
+    </div>
+
+    <script type="module">
+      import { mountGadWaiting } from "/gadwaiting.js";
+
+      const params = new URLSearchParams(location.search);
+      const mode = params.get("mock") ?? "down";
+      const links = document.querySelectorAll("nav a[data-mode]");
+      const status = document.getElementById("status");
+
+      for (const link of links) {
+        if (link.dataset.mode === mode) {
+          link.setAttribute("aria-current", "page");
+        }
+      }
+
+      const config = await fetch(`/demo-config.json?mock=${encodeURIComponent(mode)}&fast=1`, {
+        cache: "no-store"
+      }).then((response) => response.json());
+
+      const controller = mountGadWaiting(config);
+
+      window.setInterval(() => {
+        const health = controller.getHealth();
+        const label = `${health.health} ${health.reason}`;
+        status.value = label;
+        status.textContent = label;
+      }, 300);
+    </script>
+  </body>
+</html>

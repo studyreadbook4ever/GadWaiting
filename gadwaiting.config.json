@@ -1,0 +1,149 @@
+{
+  "check": {
+    "intervalMs": 60000,
+    "timeoutMs": 2500,
+    "consecutiveFailures": 1,
+    "consecutiveSuccesses": 1,
+    "startHealthy": false
+  },
+  "render": {
+    "reserveSpace": true,
+    "className": "gadwaiting"
+  },
+  "slots": [
+    {
+      "id": "sidebar-rectangle",
+      "mount": "#ad-sidebar",
+      "size": {
+        "width": 300,
+        "height": 250
+      },
+      "provider": {
+        "client": "ca-pub-1234567890123456",
+        "slot": "1234567890",
+        "format": "auto",
+        "fullWidthResponsive": true
+      },
+      "fallback": {
+        "href": "https://eff0rtchung.kr/",
+        "target": "_self",
+        "label": "Advertisement",
+        "alt": "GadWaiting fallback advertisement",
+        "assets": [
+          {
+            "src": "/house-ads/local-300x250.svg",
+            "width": 300,
+            "height": 250
+          },
+          {
+            "src": "/house-ads/local-336x280.svg",
+            "width": 336,
+            "height": 280
+          },
+          {
+            "src": "/house-ads/local-728x90.svg",
+            "width": 728,
+            "height": 90
+          },
+          {
+            "src": "/house-ads/local-970x90.svg",
+            "width": 970,
+            "height": 90
+          },
+          {
+            "src": "/house-ads/local-970x250.svg",
+            "width": 970,
+            "height": 250
+          },
+          {
+            "src": "/house-ads/local-320x50.svg",
+            "width": 320,
+            "height": 50
+          },
+          {
+            "src": "/house-ads/local-320x100.svg",
+            "width": 320,
+            "height": 100
+          },
+          {
+            "src": "/house-ads/local-300x600.svg",
+            "width": 300,
+            "height": 600
+          },
+          {
+            "src": "/house-ads/local-160x600.svg",
+            "width": 160,
+            "height": 600
+          }
+        ]
+      }
+    },
+    {
+      "id": "top-leaderboard",
+      "mount": "#ad-leaderboard",
+      "size": {
+        "width": 728,
+        "height": 90
+      },
+      "provider": {
+        "client": "ca-pub-1234567890123456",
+        "slot": "2345678901",
+        "format": "auto",
+        "fullWidthResponsive": true
+      },
+      "fallback": {
+        "href": "https://eff0rtchung.kr/",
+        "target": "_self",
+        "label": "Advertisement",
+        "alt": "GadWaiting fallback advertisement",
+        "assets": [
+          {
+            "src": "/house-ads/local-300x250.svg",
+            "width": 300,
+            "height": 250
+          },
+          {
+            "src": "/house-ads/local-336x280.svg",
+            "width": 336,
+            "height": 280
+          },
+          {
+            "src": "/house-ads/local-728x90.svg",
+            "width": 728,
+            "height": 90
+          },
+          {
+            "src": "/house-ads/local-970x90.svg",
+            "width": 970,
+            "height": 90
+          },
+          {
+            "src": "/house-ads/local-970x250.svg",
+            "width": 970,
+            "height": 250
+          },
+          {
+            "src": "/house-ads/local-320x50.svg",
+            "width": 320,
+            "height": 50
+          },
+          {
+            "src": "/house-ads/local-320x100.svg",
+            "width": 320,
+            "height": 100
+          },
+          {
+            "src": "/house-ads/local-300x600.svg",
+            "width": 300,
+            "height": 600
+          },
+          {
+            "src": "/house-ads/local-160x600.svg",
+            "width": 160,
+            "height": 600
+          }
+        ]
+      }
+    }
+  ]
+}

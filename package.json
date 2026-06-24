@@ -1,0 +1,17 @@
+{
+  "name": "gadwaiting",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Tiny TypeScript fallback layer for ad slots during web ad approval waits.",
+  "scripts": {
+    "init": "node src/cli.ts init",
+    "doctor": "node src/cli.ts doctor",
+    "probe": "node src/cli.ts probe",
+    "build": "node src/cli.ts build",
+    "demo": "node src/server.ts"
+  },
+  "engines": {
+    "node": ">=22.6"
+  }
+}

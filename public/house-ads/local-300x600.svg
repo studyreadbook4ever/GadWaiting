@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="600" viewBox="0 0 300 600" role="img" aria-labelledby="title desc">
+  <title id="title">GadWaiting fallback ad 300 by 600</title>
+  <desc id="desc">A local advertisement placeholder for ad approval waiting state.</desc>
+  <defs>
+    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#0f766e"/>
+      <stop offset="0.45" stop-color="#2563eb"/>
+      <stop offset="1" stop-color="#111827"/>
+    </linearGradient>
+  </defs>
+  <rect width="300" height="600" fill="url(#g)"/>
+  <rect x="16" y="16" width="268" height="568" rx="7" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.34)"/>
+  <text x="28" y="96" fill="#ffffff" font-family="Arial, sans-serif" font-size="24" font-weight="700">GadWaiting...</text>
+  <text x="28" y="132" fill="#dbeafe" font-family="Arial, sans-serif" font-size="15">Replace this file with your</text>
+  <text x="28" y="154" fill="#dbeafe" font-family="Arial, sans-serif" font-size="15">own 300 x 600 image.</text>
+  <rect x="28" y="500" width="132" height="34" rx="5" fill="#ffffff"/>
+  <text x="46" y="522" fill="#0f172a" font-family="Arial, sans-serif" font-size="14" font-weight="700">House Creative</text>
+</svg>
