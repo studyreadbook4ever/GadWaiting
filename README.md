@@ -1,5 +1,7 @@
 # GadWaiting
 
+download this and change public/house-ads/~~ to show the ads that you want, and change link of src/gadwaiting.config.json's "href": "https://eff0rtchung.kr/" to change the link.
+
 **GadWaiting** is a tiny TypeScript library for the waiting period before a web ad program is approved or reliably serving ads. When the ad provider script is unavailable, times out, or reports an unfilled slot, GadWaiting shows your own local image ad in the same ad slot.
 
 Official Korean service name: **개드웨이팅**.
